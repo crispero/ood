@@ -23,9 +23,8 @@ void CCircle::PrintInfo(std::ostream& fout) const
 	fout << CIRCLE << SPACE << AREA << GetArea() << SPACE << PERIMETER << GetPerimeter() << std::endl;
 }
 
-void CCircle::Draw() const
+void CCircle::Draw(ICanvas& canvas) const
 {
-	CCanvas canvas(WINDOW_WIDTH, WINDOW_HEIGHT);
 	canvas.DrawCircle(m_circle, m_center, m_radius);
 }
 

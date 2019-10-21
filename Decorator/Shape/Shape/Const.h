@@ -13,6 +13,7 @@ const std::string AREA = "Area: ";
 const std::string PERIMETER = "Perimeter: ";
 const std::string LINE_BREAK_CHARACTER = "\n";
 const std::string SPACE = " ";
+const std::string WINDOW_NAME = "Window name";
 
 const unsigned int WINDOW_WIDTH = 1000;
 const unsigned int WINDOW_HEIGHT = 800;

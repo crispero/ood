@@ -11,7 +11,7 @@ public:
 	float GetArea() const override;
 	float GetPerimeter() const override;
 	void PrintInfo(std::ostream& fout) const override;
-	void Draw() const override;
+	void Draw(ICanvas& canvas) const override;
 
 	float GetRadius() const;
 

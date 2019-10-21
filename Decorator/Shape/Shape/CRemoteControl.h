@@ -2,6 +2,7 @@
 #include "CCircle.h"
 #include "CRectangle.h"
 #include "CTriangle.h"
+#include "CCanvas.h"
 
 class CRemoteControl
 {

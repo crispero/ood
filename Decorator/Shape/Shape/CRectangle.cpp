@@ -33,8 +33,7 @@ void CRectangle::PrintInfo(std::ostream& fout) const
 	fout << RECTANGLE << SPACE << AREA << GetArea() << SPACE << PERIMETER << GetPerimeter() << std::endl;
 }
 
-void CRectangle::Draw() const
+void CRectangle::Draw(ICanvas& canvas) const
 {
-	CCanvas canvas(WINDOW_WIDTH, WINDOW_HEIGHT);
 	canvas.DrawRectangle(m_rectangle, GetWidth(), GetHeight());
 }

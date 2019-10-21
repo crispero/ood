@@ -101,8 +101,9 @@ void CRemoteControl::PrintInfo()
 
 void CRemoteControl::DrawShapes()
 {
-	for (auto shape : m_shapes)
+	if (!m_shapes.empty())
 	{
-		shape->Draw();
+		CCanvas canvas(WINDOW_WIDTH, WINDOW_HEIGHT);
+		canvas.DrawShapes(m_shapes);
 	}
 }

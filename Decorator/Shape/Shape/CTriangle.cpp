@@ -35,9 +35,8 @@ void CTriangle::PrintInfo(std::ostream& fout) const
 	fout << TRIANGLE << SPACE << AREA << GetArea() << SPACE << PERIMETER << GetPerimeter() << std::endl;
 }
 
-void CTriangle::Draw() const
+void CTriangle::Draw(ICanvas& canvas) const
 {
-	CCanvas canvas(WINDOW_WIDTH, WINDOW_HEIGHT);
 	canvas.DrawTriangle(m_triangle, m_vertex1, m_vertex2, m_vertex3);
 }
 
