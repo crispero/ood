@@ -1,6 +1,6 @@
 #include "CCircle.h"
 
-CCircle::CCircle(sf::CircleShape& circle, const sf::Vector2f& center, const double& radius)
+CCircle::CCircle(sf::CircleShape& circle, const sf::Vector2f& center, const float radius)
 	: CShapeDecorator(circle)
 	, m_circle(circle)
 	, m_center(center)
@@ -8,14 +8,14 @@ CCircle::CCircle(sf::CircleShape& circle, const sf::Vector2f& center, const doub
 {
 }
 
-double CCircle::GetArea() const
+float CCircle::GetArea() const
 {
-	return M_PI * GetRadius() * GetRadius();
+	return float(M_PI * GetRadius() * GetRadius());
 }
 
-double CCircle::GetPerimeter() const
+float CCircle::GetPerimeter() const
 {
-	return 2 * M_PI * GetRadius();
+	return float(2 * M_PI * GetRadius());
 }
 
 void CCircle::PrintInfo(std::ostream& fout) const
@@ -23,7 +23,13 @@ void CCircle::PrintInfo(std::ostream& fout) const
 	fout << CIRCLE << SPACE << AREA << GetArea() << SPACE << PERIMETER << GetPerimeter() << std::endl;
 }
 
-double CCircle::GetRadius() const
+void CCircle::Draw() const
+{
+	CCanvas canvas(WINDOW_WIDTH, WINDOW_HEIGHT);
+	canvas.DrawCircle(m_circle, m_center, m_radius);
+}
+
+float CCircle::GetRadius() const
 {
 	return m_radius;
 }

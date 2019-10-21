@@ -1,2 +1,6 @@
-Rectangle 100 300 400 100
-Circle 100 100 50
+Circle 200 200 50
+Circle 600 300 100
+Rectangle 150 300 400 200
+Rectangle 30 114 90 480
+Triangle 400 200 400 180 500 370
+Triangle 200 300 100 190 140 160

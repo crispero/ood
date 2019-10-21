@@ -11,12 +11,13 @@ public:
 	CRectangle(sf::RectangleShape& rectangle, sf::Vector2f& leftTop, sf::Vector2f& rightBottom);
 	~CRectangle() = default;
 
-	double GetArea() const override;
-	double GetPerimeter() const override;
+	float GetArea() const override;
+	float GetPerimeter() const override;
 	void PrintInfo(std::ostream& fout) const override;
+	void Draw() const override;
 
-	double GetWidth() const;
-	double GetHeight() const;
+	float GetWidth() const;
+	float GetHeight() const;
 	
 private:
 	sf::RectangleShape m_rectangle;

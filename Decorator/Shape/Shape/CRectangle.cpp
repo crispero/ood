@@ -8,22 +8,22 @@ CRectangle::CRectangle(sf::RectangleShape& rectangle, sf::Vector2f& leftTop, sf:
 {
 }
 
-double CRectangle::GetArea() const
+float CRectangle::GetArea() const
 {
 	return GetHeight() * GetWidth();
 }
 
-double CRectangle::GetPerimeter() const
+float CRectangle::GetPerimeter() const
 {
 	return (GetHeight() + GetWidth()) * 2;
 }
 
-double CRectangle::GetWidth() const
+float CRectangle::GetWidth() const
 {
 	return std::abs(m_rightBottom.x - m_leftTop.x);
 }
 
-double CRectangle::GetHeight() const
+float CRectangle::GetHeight() const
 {
 	return std::abs(m_leftTop.y - m_rightBottom.y);
 }
@@ -31,4 +31,10 @@ double CRectangle::GetHeight() const
 void CRectangle::PrintInfo(std::ostream& fout) const
 {
 	fout << RECTANGLE << SPACE << AREA << GetArea() << SPACE << PERIMETER << GetPerimeter() << std::endl;
+}
+
+void CRectangle::Draw() const
+{
+	CCanvas canvas(WINDOW_WIDTH, WINDOW_HEIGHT);
+	canvas.DrawRectangle(m_rectangle, GetWidth(), GetHeight());
 }

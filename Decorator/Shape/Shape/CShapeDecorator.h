@@ -1,7 +1,9 @@
 #pragma once
-#include "ICanvas.h"
 #include "IShape.h"
+#include "ICanvas.h"
+#include "CCanvas.h"
 #include "Const.h"
+#include <cmath>
 
 class CShapeDecorator : public sf::Shape, public IShape
 {

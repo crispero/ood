@@ -1,6 +1,5 @@
 #include "CRemoteControl.h"
 #include "Const.h"
-#include "IShape.h"
 #include <sstream>
 
 CRemoteControl::CRemoteControl(std::istream& input, std::ostream& output)
@@ -22,17 +21,17 @@ void CRemoteControl::HandleCommand()
 		if (shapeName == CIRCLE)
 		{
 			shapeDecorator = CreateCircle(ist);
-			m_shape.push_back(shapeDecorator);
+			m_shapes.push_back(shapeDecorator);
 		}
 		else if (shapeName == RECTANGLE)
 		{
 			shapeDecorator = CreateRectangle(ist);
-			m_shape.push_back(shapeDecorator);
+			m_shapes.push_back(shapeDecorator);
 		}
 		else if (shapeName == TRIANGLE)
 		{
-		//	shapeDecorator = CreateTriangle(ist);
-		//	m_shape.push_back(shapeDecorator);
+			shapeDecorator = CreateTriangle(ist);
+			m_shapes.push_back(shapeDecorator);
 		}
 		else
 		{
@@ -44,7 +43,7 @@ void CRemoteControl::HandleCommand()
 std::shared_ptr<CCircle> CRemoteControl::CreateCircle(std::istream& ist)
 {
 	sf::CircleShape circle;
-	double centerX, centerY, radius;
+	float centerX, centerY, radius;
 
 	ist >> centerX >> centerY >> radius;
 
@@ -56,7 +55,7 @@ std::shared_ptr<CCircle> CRemoteControl::CreateCircle(std::istream& ist)
 std::shared_ptr<CRectangle> CRemoteControl::CreateRectangle(std::istream& ist)
 {
 	sf::RectangleShape rectangle;
-	double leftTopX, leftTopY, rightBottomX, rightBottomY;
+	float leftTopX, leftTopY, rightBottomX, rightBottomY;
 
 	ist >> leftTopX >> leftTopY >> rightBottomX >> rightBottomY;
 
@@ -68,9 +67,10 @@ std::shared_ptr<CRectangle> CRemoteControl::CreateRectangle(std::istream& ist)
 
 std::shared_ptr<CTriangle> CRemoteControl::CreateTriangle(std::istream& ist)
 {
-	double x1, y1;
-	double x2, y2;
-	double x3, y3;
+	sf::ConvexShape triangle;
+	float x1, y1;
+	float x2, y2;
+	float x3, y3;
 
 	ist >> x1 >> y1;
 	ist >> x2 >> y2;
@@ -80,21 +80,29 @@ std::shared_ptr<CTriangle> CRemoteControl::CreateTriangle(std::istream& ist)
 	sf::Vector2f vertex2(x2, y2);
 	sf::Vector2f vertex3(x3, y3);
 
-	return std::make_shared<CTriangle>();
+	return std::make_shared<CTriangle>(triangle, vertex1, vertex2, vertex3);
 }
 
 
 void CRemoteControl::PrintInfo()
 {
-	if (m_shape.size() == 0)
+	if (m_shapes.size() == 0)
 	{
 		m_output << ERROR_NO_FIGURES_FOUND;
 	}
 	else 
 	{
-		for (auto shape : m_shape)
+		for (auto shape : m_shapes)
 		{
 			shape->PrintInfo(m_output);
 		}
+	}
+}
+
+void CRemoteControl::DrawShapes()
+{
+	for (auto shape : m_shapes)
+	{
+		shape->Draw();
 	}
 }

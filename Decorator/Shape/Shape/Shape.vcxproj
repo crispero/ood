@@ -156,7 +156,6 @@
   <ItemGroup>
     <ClCompile Include="CCanvas.cpp" />
     <ClCompile Include="CCircle.cpp" />
-    <ClCompile Include="CPoint.cpp" />
     <ClCompile Include="CRectangle.cpp" />
     <ClCompile Include="CRemoteControl.cpp" />
     <ClCompile Include="CShape.cpp" />
@@ -168,7 +167,6 @@
     <ClInclude Include="CCanvas.h" />
     <ClInclude Include="CCircle.h" />
     <ClInclude Include="Const.h" />
-    <ClInclude Include="CPoint.h" />
     <ClInclude Include="CRectangle.h" />
     <ClInclude Include="CRemoteControl.h" />
     <ClInclude Include="CShape.h" />
